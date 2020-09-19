@@ -60,6 +60,8 @@ class frame:
 
         Parameters:
         imgHandle: Path of file to open
+
+        Returns: None
         """
 
         self.hostImage = io.imread(imgHandle)
