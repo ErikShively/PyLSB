@@ -81,8 +81,8 @@ class frame:
         """
         imgX = -1
         bitList = self._int2bList(len(self.dataToEncode), self.encLen) + self.dataToEncode
-        
-        if((filetype.guess(handle).extension == "jpg") | (filetype.guess(handle).extension == "jpeg")):
+        ext = handle.split(sep='.')[-1]
+        if((ext == "jpg") | (ext == "jpeg")):
             print("Detecting a lossy format. Forcing host to png.")
             handle += ".png"
 
