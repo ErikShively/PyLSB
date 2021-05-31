@@ -60,8 +60,6 @@ class frame:
 
         Parameters:
         imgHandle: Path of file to open
-
-        Returns: None
         """
 
         self.hostImage = io.imread(imgHandle)
@@ -81,8 +79,9 @@ class frame:
         """
         imgX = -1
         bitList = self._int2bList(len(self.dataToEncode), self.encLen) + self.dataToEncode
-        ext = handle.split(sep='.')[-1]
-        if((ext == "jpg") | (ext == "jpeg")):
+        
+        # if((filetype.guess(handle).extension == "jpg") | (filetype.guess(handle).extension == "jpeg")):
+        if((str(handle.split('.')[-1]).lower() == "jpg") | (str(handle.split('.'[-1])).lower() == "jpeg")):
             print("Detecting a lossy format. Forcing host to png.")
             handle += ".png"
 
@@ -139,6 +138,8 @@ class frame:
         if(verbose):
             print(dataToDecode)
         dataToDecode.tofile(outFile)
+        
+        return True
 
 #Handles argparse in main
 if __name__ == "__main__":
